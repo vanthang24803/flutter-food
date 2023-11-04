@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food/contact.dart';
+import 'package:food/reviews.dart';
 
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home:  ContactItem(),
+      home:  Reviews(),
     );
   }
 }
