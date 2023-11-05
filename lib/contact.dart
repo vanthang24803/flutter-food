@@ -2,8 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food/all_categories/all_categories.dart';
+import 'package:food/appbar_item.dart';
 import 'package:food/login.dart';
+import 'package:food/orderHistory.dart';
 import 'package:food/profile.dart';
+import 'package:food/reviews.dart';
 import 'package:food/search.dart';
 
 class ContactItem extends StatefulWidget {
@@ -24,7 +28,6 @@ class _ContactItemState extends State<ContactItem>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
-    ;
   }
 
   @override
@@ -36,26 +39,14 @@ class _ContactItemState extends State<ContactItem>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFDB166E),
-        title: const Text(
-          "ALL CATEGORIS",
-          textAlign: TextAlign.center,
-        ),
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
-        actions: <Widget>[
-          IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-        ],
-      ),
+      
       body: PageView(
         controller: controller,
         children: const [
           Search(),
-          Login(),
+          OrderHistoryItem(),
+          AppBarItem(),
+          Reviews(),
           Profile(),
         ],
       ),
@@ -79,7 +70,7 @@ class _ContactItemState extends State<ContactItem>
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              "assets/vectors/loading.svg",
+              "assets/vectors/heart.svg",
               color:
                   _selectedIndex == 2 ? const Color(0xFFDB166E) : Colors.grey,
             ),
