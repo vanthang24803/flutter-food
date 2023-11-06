@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class OrderHistoryItem extends StatefulWidget {
   const OrderHistoryItem({super.key});

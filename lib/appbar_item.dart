@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:food/list_production.dart';
 
 class AppBarItem extends StatefulWidget {
@@ -11,7 +10,6 @@ class AppBarItem extends StatefulWidget {
 
 class _AppBarItemState extends State<AppBarItem>
   with SingleTickerProviderStateMixin {
-  int _selectedIndex = 0;
   final PageController controller = PageController();
 
   late TabController _tabController;
