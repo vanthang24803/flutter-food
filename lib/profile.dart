@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food/home.dart';
+import 'package:food/orderHistory.dart';
 
 import 'package:food/payment.dart';
 
@@ -31,7 +32,7 @@ List<Item> items = [
     label: 'Orders History',
     svgAsset: 'assets/vectors/menu.svg',
     color: const Color(0xFF4C8DE7),
-    destinationScreen: const Home(),
+    destinationScreen: const OrderHistoryItem(),
   ),
   Item(
     label: 'Payment Method',
