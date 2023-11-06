@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food/all_categories/all_categories.dart';
-import 'package:food/appbar_item.dart';
-import 'package:food/login.dart';
+import 'package:food/favories.dart';
 import 'package:food/orderHistory.dart';
 import 'package:food/profile.dart';
 import 'package:food/reviews.dart';
@@ -45,7 +43,7 @@ class _ContactItemState extends State<ContactItem>
         children: const [
           Search(),
           OrderHistoryItem(),
-          AppBarItem(),
+          FavoriesItem(),
           Reviews(),
           Profile(),
         ],

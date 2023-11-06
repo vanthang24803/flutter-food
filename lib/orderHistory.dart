@@ -173,7 +173,7 @@ List<OrdersHistory> orders = [
   OrdersHistory(
     imageOrder: "assets/images/Potato.png",
     name: "Awful Potato Bagel",
-    des: "Truffle with mashed potato ",
+    des: "Truffle with mashed potato full toping .....",
     start: 4,
     viewers: 223,
     timeUp: "28 Nov 2021 10 : 32 AM",
@@ -181,8 +181,8 @@ List<OrdersHistory> orders = [
   ),
   OrdersHistory(
     imageOrder: "assets/images/Breadcrumb.png",
-    name: "Awful Potato Bagel",
-    des: "Truffle with mashed potato ",
+    name: "Breadcrumb Coated Crab Cakes",
+    des: "With avocado, red onion and spicy salsa .....",
     start: 4,
     viewers: 223,
     timeUp: "28 Nov 2021 10 : 32 AM",
@@ -190,8 +190,8 @@ List<OrdersHistory> orders = [
   ),
   OrdersHistory(
     imageOrder: "assets/images/Salmon.png",
-    name: "Awful Potato Bagel",
-    des: "Truffle with mashed potato ",
+    name: "Smoked Salmon Pasta",
+    des: "Smoked salmon with cherry tomatoes, red.....",
     start: 4,
     viewers: 223,
     timeUp: "28 Nov 2021 10 : 32 AM",
@@ -199,8 +199,8 @@ List<OrdersHistory> orders = [
   ),
   OrdersHistory(
     imageOrder: "assets/images/Penne.png",
-    name: "Awful Potato Bagel",
-    des: "Truffle with mashed potato ",
+    name: "Penne Arrabbiata",
+    des: "Fresh basil, garlic, onions, bell peppers, chili..... ",
     start: 4,
     viewers: 223,
     timeUp: "28 Nov 2021 10 : 32 AM",
@@ -208,8 +208,8 @@ List<OrdersHistory> orders = [
   ),
   OrdersHistory(
     imageOrder: "assets/images/Concubine.png",
-    name: "Awful Potato Bagel",
-    des: "Truffle with mashed potato ",
+    name: "Concubine Chicken",
+    des: "Sushi Platter | Tuna (2 pcs), Semi-fatty Tuna (2 pcs)",
     start: 4,
     viewers: 223,
     timeUp: "28 Nov 2021 10 : 32 AM",
@@ -217,8 +217,8 @@ List<OrdersHistory> orders = [
   ),
   OrdersHistory(
     imageOrder: "assets/images/GingerRed.png",
-    name: "Awful Potato Bagel",
-    des: "Truffle with mashed potato ",
+    name: "Ginger Red Date Cake",
+    des: "Lipie, carne pui, cartofi pai,sosuri, salata - 700g",
     start: 4,
     viewers: 223,
     timeUp: "28 Nov 2021 10 : 32 AM",

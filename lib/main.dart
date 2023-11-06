@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/contact.dart';
+import 'package:food/favories.dart';
 
 void main() {
   runApp(const MyApp());

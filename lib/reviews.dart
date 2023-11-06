@@ -36,7 +36,7 @@ class _ReviewsState extends State<Reviews> {
               const Text(
                 "REVIEWS",
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 20,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                 ),

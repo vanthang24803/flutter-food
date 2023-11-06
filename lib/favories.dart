@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class TESTVIEW extends StatefulWidget {
-  const TESTVIEW({super.key});
+class FavoriesItem extends StatefulWidget {
+  const FavoriesItem({super.key});
 
   @override
-  State<TESTVIEW> createState() => _TESTVIEWState();
+  State<FavoriesItem> createState() => _FavoriesItemState();
 }
 
-class _TESTVIEWState extends State<TESTVIEW> {
+class _FavoriesItemState extends State<FavoriesItem> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFDB166E),
+        title: const Align(
+          alignment: Alignment.center,
+          child: Text(
+            "FAVORIES",
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        icon: const Icon(Icons.arrow_back),
+        ),
+        actions: [
+          IconButton(
+            onPressed: (){
+              
+            },
+            icon: const Icon(Icons.search))
+        ],
+      ),
+
+      body: Column(
       children: [
         Expanded(
           child: ListView.separated(
@@ -99,6 +125,7 @@ class _TESTVIEWState extends State<TESTVIEW> {
           ),
         ),
       ],
+    ),
     );
   }
 }
