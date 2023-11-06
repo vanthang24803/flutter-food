@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food/reviews.dart';
+import 'package:food/book_table.dart';
+// import 'package:food/contact.dart';
+// import 'package:food/notification.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Reviews(),
+      home: SafeArea(
+        child: Scaffold(
+          body: BookTable(),  
+        )
+      ),
     );
   }
 }

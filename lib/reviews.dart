@@ -1,10 +1,10 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Reviews extends StatefulWidget {
-  const Reviews({super.key});
+  const Reviews({Key? key});
 
   @override
   State<Reviews> createState() => _ReviewsState();
@@ -16,7 +16,7 @@ class _ReviewsState extends State<Reviews> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFFDB166E),
-        toolbarHeight: 60, // Đặt chiều cao cho AppBar
+        toolbarHeight: 60, // Set the height for the AppBar
         title: Align(
           alignment: Alignment.center,
           child: Row(
@@ -36,7 +36,7 @@ class _ReviewsState extends State<Reviews> {
               const Text(
                 "REVIEWS",
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 20,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                 ),
@@ -54,112 +54,109 @@ class _ReviewsState extends State<Reviews> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(
-          top: 30.0,
-          left: 20,
-          right: 20,
-          bottom: 20,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ListView.builder(
-              shrinkWrap:
-                  true, // Để tránh lỗi 'Vertical viewport was given unbounded height'
-              itemCount: reviews.length, // Số lượng hàng trong danh sách
-              itemBuilder: (BuildContext context, int index) {
-                // Trả về một hàng cụ thể dựa trên dữ liệu ở vị trí index
-                var data = reviews[index];
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 30.0,
+            left: 20,
+            right: 20,
+            bottom: 20,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: reviews.length,
+                itemBuilder: (BuildContext context, int index) {
+                  var data = reviews[index];
 
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 30),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Image.asset(
-                          data.imgUserName,
-                          width: 42,
-                          height: 42,
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Image.asset(
+                            data.imgUserName,
+                            width: 42,
+                            height: 42,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 22,
+                        const SizedBox(
+                          width: 20,
                         ),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        data.userName,
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 8.0),
-                                        child: Text(
-                                          data.time,
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 22,
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 20),
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          data.userName,
                                           style: const TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w800,
-                                            color: Colors.grey,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 90,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      for (int i = 0; i < 5; i++)
-                                        Icon(
-                                          Icons.star,
-                                          color: i < data.star
-                                              ? const Color(0xFFDB166E)
-                                              : Colors.grey,
-                                        ),
-                                    ],
-                                  )
-                                ],
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 8.0),
+                                          child: Text(
+                                            data.time,
+                                            style: const TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w800,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      width: 90,
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        for (int i = 0; i < 5; i++)
+                                          Icon(
+                                            Icons.star,
+                                            color: i < data.star
+                                                ? const Color(0xFFDB166E)
+                                                : Colors.grey,
+                                          ),
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width:
-                                  280, // Đặt chiều rộng cố định của Container
-                              child: Text(
-                                data.review,
-                                maxLines: 20, // Số dòng tối đa
-                                overflow: TextOverflow
-                                    .ellipsis, // Hiển thị dấu chấm 3 chấm (...) khi cắt ngắn
-                                softWrap: true, // Cho phép tự động xuống dòng
-                              ),
-                            )
-                          ],
+                              SizedBox(
+                                width: 280,
+                                child: Text(
+                                  data.review,
+                                  maxLines: 20,
+                                  overflow: TextOverflow.ellipsis,
+                                  softWrap: true,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ],
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

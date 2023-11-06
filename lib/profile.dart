@@ -67,7 +67,7 @@ class _ProfileState extends State<Profile> {
         children: [
           Container(
             color: const Color(0xFFDB166E),
-            height: 320,
+            height: 300,
           ),
           Positioned(
             top: 20,
