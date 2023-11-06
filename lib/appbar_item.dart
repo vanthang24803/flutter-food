@@ -10,7 +10,7 @@ class AppBarItem extends StatefulWidget {
 }
 
 class _AppBarItemState extends State<AppBarItem>
-    with SingleTickerProviderStateMixin {
+  with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
   final PageController controller = PageController();
 
@@ -20,7 +20,6 @@ class _AppBarItemState extends State<AppBarItem>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
-    ;
   }
 
   @override
@@ -35,9 +34,12 @@ class _AppBarItemState extends State<AppBarItem>
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFFDB166E),
-          title: const Text(
-            "ALL CATEGORIS",
-            textAlign: TextAlign.center,
+          title:const Align(
+            alignment: Alignment.center,
+            child:  Text(
+              "ALL CATEGORIS",
+              textAlign: TextAlign.center,
+            ),
           ),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
@@ -65,7 +67,6 @@ class _AppBarItemState extends State<AppBarItem>
               )
             ],
             controller: _tabController,
-            
             indicatorColor: Colors.white,
             indicatorSize: TabBarIndicatorSize.tab,
           ),
@@ -75,65 +76,23 @@ class _AppBarItemState extends State<AppBarItem>
           children: [
             Center(
               child: PageView(
-                children: [
+                children: const [
                   ListProduction(
                     title: 'all',
                   )
                 ],
               ),
             ),
-            Center(
+            const Center(
               child: Text("CHATS"),
             ),
-            Center(
+            const Center(
+              child: Text("CONTACTS"),
+            ),
+            const Center(
               child: Text("CONTACTS"),
             )
           ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "assets/vectors/cook.svg",
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "assets/vectors/menu.svg",
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "assets/vectors/loading.svg",
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "assets/vectors/bell.svg",
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "assets/vectors/user.svg",
-              ),
-              label: '',
-            ),
-          ],
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.black,
-          onTap: (index) {
-            print("HiSmile $index");
-            setState(() {
-              _selectedIndex = index;
-              controller.jumpToPage(index);
-            });
-          },
-          elevation: 5,
         ),
       ),
     );
