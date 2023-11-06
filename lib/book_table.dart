@@ -299,48 +299,127 @@ class _BookTableState extends State<BookTable> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Total : \$${totalAmount.toStringAsFixed(2)}",
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "Total : \$${totalAmount.toStringAsFixed(2)}",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
-                      const SizedBox(
-                        width: 200,
-                      ),
-                      Row(
-                        children: [
-                          const Text(
-                            "ORDER",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    ),
+                    const SizedBox(
+                      width: 200,
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          "ORDER",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Padding(
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  content: Container(
+                                    height: 300,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors
+                                            .transparent, // Đặt màu border thành trong suốt
+                                        width: 2.0, // Đặt độ rộng border
+                                      ),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        Image.asset(
+                                          "assets/images/shipper.png",
+                                          width: 100,
+                                          height: 100,
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        const Text(
+                                          'Thank you',
+                                          style: TextStyle(
+                                            fontSize: 36,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        const Text(
+                                          'Your order is successfully',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.of(context)
+                                                .pop(); // Đóng pop-up khi nút "OK" được nhấn
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            primary: const Color(
+                                                0xFFDB166E), // Đặt màu nền cho nút
+                                          ),
+                                          child: const SizedBox(
+                                            width: 100,
+                                            height: 40,
+                                            child: Center(
+                                              child: Text(
+                                                'OK',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: Padding(
                             padding: const EdgeInsets.only(
                               right: 20.0,
                             ),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: SvgPicture.asset(
-                                'assets/vectors/arrow-right.svg',
-                                width: 24,
-                                height: 24,
-                                color: Colors.white,
-                              ),
+                            child: SvgPicture.asset(
+                              'assets/vectors/arrow-right.svg',
+                              width: 24,
+                              height: 24,
+                              color: Colors.white,
                             ),
                           ),
-                        ],
-                      )
-                    ],
-                  )),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),

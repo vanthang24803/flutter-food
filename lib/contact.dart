@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food/book_table.dart';
 import 'package:food/favories.dart';
-import 'package:food/orderHistory.dart';
 import 'package:food/profile.dart';
 import 'package:food/reviews.dart';
 import 'package:food/search.dart';
@@ -42,7 +42,7 @@ class _ContactItemState extends State<ContactItem>
         controller: controller,
         children: const [
           Search(),
-          OrderHistoryItem(),
+          BookTable(),
           FavoriesItem(),
           Reviews(),
           Profile(),
