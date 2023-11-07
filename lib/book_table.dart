@@ -30,9 +30,9 @@ class _BookTableState extends State<BookTable> {
                   Navigator.pop(context);
                 },
                 child: SvgPicture.asset(
-                  'assets/vectors/arrow-left.svg',
-                  width: 24,
-                  height: 24,
+                  'assets/vectors/close.svg',
+                  width: 40,
+                  height: 40,
                   color: Colors.black,
                 ),
               ),

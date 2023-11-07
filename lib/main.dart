@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food/contact.dart';
+// import 'package:food/contact.dart';
+import 'package:food/label_search.dart';
 // import 'package:food/profile.dart';
 // import 'package:food/contact.dart';
 // import 'package:food/book_table.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          body: ContactItem(),  
+          body: LabelSearchBar(),  
         )
       ),
     );
