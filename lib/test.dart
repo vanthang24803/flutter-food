@@ -41,13 +41,13 @@ class _TESTVIEWState extends State<TESTVIEW>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
+                  Expanded(child: const FavoriesInItemPage()),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: IconButton(
                         onPressed: () {},
                         icon: const Icon(Icons.restart_alt_outlined)),
                   ),
-                  Expanded(child: const FavoriesInItemPage()),
                 ],
               ),
             ),
