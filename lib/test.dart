@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food/list_production.dart';
-import 'package:food/screen_appbar/appbar_item.dart';
+import 'package:food/screen_appbar/appbarScreen.dart';
 import 'package:food/screen_appbar/pageFavoriesInItem.dart';
 
 class TESTVIEW extends StatefulWidget {
@@ -11,24 +11,49 @@ class TESTVIEW extends StatefulWidget {
   State<TESTVIEW> createState() => _TESTVIEWState();
 }
 
-class _TESTVIEWState extends State<TESTVIEW> {
+class _TESTVIEWState extends State<TESTVIEW>
+    with SingleTickerProviderStateMixin {
+  int _selectedIndex = 0;
+  final PageController controller = PageController();
+
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
           const AppbarScreen(),
-          Container(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.restart_alt_outlined)),
+          Expanded(
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.restart_alt_outlined)),
+                  ),
+                  Expanded(child: const FavoriesInItemPage()),
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
-
