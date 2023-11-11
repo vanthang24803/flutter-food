@@ -177,6 +177,8 @@ class Review {
     required this.review,
     required this.star,
   });
+
+  static fromJson(reviewData) {}
 }
 
 List<Review> reviews = [
