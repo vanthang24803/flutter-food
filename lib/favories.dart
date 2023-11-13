@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/info_produce.dart';
 
 class FavoriesItem extends StatefulWidget {
   const FavoriesItem({super.key});
@@ -26,106 +27,135 @@ class _FavoriesItemState extends State<FavoriesItem> {
           onPressed: () {
             Navigator.pop(context);
           },
-        icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
         ),
-        actions: [
-          IconButton(
-            onPressed: (){
-              
-            },
-            icon: const Icon(Icons.search))
-        ],
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
-
       body: Column(
-      children: [
-        Expanded(
-          child: ListView.separated(
-            itemCount: orders.length,
-            separatorBuilder: (BuildContext context, int index) {
-              return Container(
-                  color: const Color(0xFFEDEDED),
-                  height: 1,
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 16,
-                  ));
-            },
-            itemBuilder: (BuildContext context, int index) {
-              return Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20,
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            bottom: 12,
-                          ),
-                          child: SizedBox(
-                            width: 342,
-                            height: 180,
-                            child: Center(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(
-                                      "${orders[index].imageOrder}",
+        children: [
+          Expanded(
+            child: ListView.separated(
+              itemCount: orders.length,
+              separatorBuilder: (BuildContext context, int index) {
+                return Container(
+                    color: const Color(0xFFEDEDED),
+                    height: 1,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 16,
+                      horizontal: 16,
+                    ));
+              },
+              itemBuilder: (BuildContext context, int index) {
+                return Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 20,
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 12,
+                            ),
+                            child: SizedBox(
+                              width: 342,
+                              height: 180,
+                              child: Center(
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const InfoProduce()),
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16),
+                                      image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                          "${orders[index].imageOrder}",
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Text(
-                                "${orders[index].name}",
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.bold,
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const InfoProduce()),
+                                    );
+                                  },
+                                  child: Text(
+                                    "${orders[index].name}",
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      color: Color(0xFF000000),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 20.0),
-                              child: Text(
-                                "${orders[index].des}",
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Color(0xFF5F5F5F),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20.0),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const InfoProduce()),
+                                    );
+                                  },
+                                  child: Text(
+                                    "${orders[index].des}",
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Color(0xFF5F5F5F),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Text(
-                                "${orders[index].viewers} Viewers",
-                                style: const TextStyle(fontSize: 14),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const InfoProduce()),
+                                    );
+                                  },
+                                  child: Text(
+                                    "${orders[index].viewers} Viewers",
+                                    style: const TextStyle(fontSize: 14),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              );
-            },
+                  ],
+                );
+              },
+            ),
           ),
-        ),
-      ],
-    ),
+        ],
+      ),
     );
   }
 }
