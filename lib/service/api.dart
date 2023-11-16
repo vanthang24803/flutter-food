@@ -1,4 +1,4 @@
-// ignore_for_file: use_rethrow_when_possible, avoid_print, constant_identifier_names
+// ignore_for_file: use_rethrow_when_possible, avoid_print, constant_identifier_names, prefer_collection_literals
 
 import 'dart:convert';
 
@@ -74,5 +74,32 @@ class API {
       print('Error: $error');
       throw error;
     }
+  }
+
+  static Future<Map<String, dynamic>> getProfile() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$BASE_URL/profile'),
+        headers: {'Cookie': _getCookieHeader()},
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> profileData = json.decode(response.body);
+        return profileData;
+      } else {
+        throw Exception('Failed tso load profile data');
+      }
+    } catch (error) {
+      print('Error: $error');
+      throw error;
+    }
+  }
+
+  static String _getCookieHeader() {
+    final List<String> cookies = cookieJar.entries
+        .map((entry) => '${entry.key}=${entry.value}')
+        .toList();
+        print(cookies);
+    return cookies.join('; ');
   }
 }

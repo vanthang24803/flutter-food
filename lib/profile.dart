@@ -6,6 +6,7 @@ import 'package:food/home.dart';
 import 'package:food/orderHistory.dart';
 
 import 'package:food/payment.dart';
+import 'package:food/service/api.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -61,6 +62,35 @@ List<Item> items = [
 ];
 
 class _ProfileState extends State<Profile> {
+  String userName = "";
+  String userAddress = "";
+  String userAvatarUrl = 'assets/images/avt_men.png';
+
+ Future<void> _fetchUserData() async {
+  try {
+    // Gọi API để lấy thông tin người dùng từ server
+    final Map<String, dynamic> userData = await API.getProfile();
+
+    // Cập nhật State với thông tin mới từ API
+    setState(() {
+      userName = userData['username'];
+      userAddress = userData['address'];
+      userAvatarUrl = userData['avatar'];
+    });
+  } catch (error) {
+    print('Error fetching user data: $error');
+    // Xử lý lỗi nếu cần
+  }
+}
+
+
+  @override
+  void initState() {
+    super.initState();
+    // Gọi hàm _fetchUserData khi màn hình được tạo
+    _fetchUserData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,16 +117,16 @@ class _ProfileState extends State<Profile> {
             left: 20,
             child: Row(
               children: [
-                Image.asset(
-                  'assets/images/avt_men.png',
+                Image.network(
+                  userAvatarUrl,
                   width: 100,
                   height: 100,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Erik Walters",
+                      userName, // Sử dụng tên từ API
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
@@ -104,7 +134,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     Text(
-                      "0383 zendar park",
+                      userAddress, // Sử dụng địa chỉ từ API
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w300,
@@ -112,7 +142,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

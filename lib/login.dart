@@ -13,6 +13,7 @@ class _LoginState extends State<Login> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  String _errorMessage = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,6 +68,14 @@ class _LoginState extends State<Login> {
                     obscureText: true,
                   ),
                 ),
+                if (_errorMessage.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      _errorMessage,
+                      style: const TextStyle(color: Colors.red),
+                    ),
+                  ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -88,6 +97,10 @@ class _LoginState extends State<Login> {
                     } catch (error) {
                       print('Login failed: $error');
                       // Handle or show login failure, you can use showDialog() to display an alert dialog
+                      setState(() {
+                        _errorMessage =
+                            'Tên đăng nhập hoặc tài khoản không chính xác';
+                      });
                     }
                   },
                   style: ButtonStyle(
