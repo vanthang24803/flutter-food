@@ -1,5 +1,8 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:flutter/material.dart';
 import 'package:food/model/product_model.dart'; // Import model Product
+import 'package:food/product_detail.dart';
 import 'package:food/service/api.dart';
 
 class FavoriesItem extends StatefulWidget {
@@ -59,109 +62,100 @@ class _FavoriesItemState extends State<FavoriesItem> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.separated(
-              itemCount: products.length,
-              separatorBuilder: (BuildContext context, int index) {
-                return Container(
-                  color: const Color(0xFFEDEDED),
-                  height: 1,
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 16,
-                  ),
-                );
-              },
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 20,
-                        left: 25,
+      body: ListView.builder(
+        itemCount: products.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 20,
+                  left: 25,
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetailPage(productId: products[index].id),
                       ),
-                      child: Column(
+                    );
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          bottom: 12,
+                        ),
+                        child: SizedBox(
+                          width: 342,
+                          height: 180,
+                          child: Center(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(
+                                    "${products[index].image}",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.only(
-                              bottom: 12,
-                            ),
-                            child: SizedBox(
-                              width: 342,
-                              height: 180,
-                              child: Center(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16),
-                                    image: DecorationImage(
-                                      fit: BoxFit.fill,
-                                      image: NetworkImage(
-                                        "${products[index].image}",
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                            padding: const EdgeInsets.only(left: 20, top: 10),
+                            child: Text(
+                              products[index].name,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Color(0xFF000000),
+                                fontWeight: FontWeight.bold,
                               ),
+                              textAlign: TextAlign.end, // Căn phải văn bản
                             ),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 20, top: 10),
-                                child: Text(
-                                  products[index].name,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    color: Color(0xFF000000),
-                                    fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20, top: 10),
+                            child: Text(
+                              products[index].description,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF5F5F5F),
+                              ),
+                              textAlign: TextAlign.end, // Căn phải văn bản
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20, top: 10),
+                            child: Row(
+                              children: <Widget>[
+                                for (int i = 0; i < 5; i++)
+                                  Icon(
+                                    Icons.star,
+                                    color: i < products[index].star
+                                        ? const Color(0xFFDB166E)
+                                        : Colors.grey,
                                   ),
-                                  textAlign: TextAlign.end, // Căn phải văn bản
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 20, top: 10),
-                                child: Text(
-                                  products[index].description,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Color(0xFF5F5F5F),
-                                  ),
-                                  textAlign: TextAlign.end, // Căn phải văn bản
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 20, top: 10),
-                                child: Row(
-                                  children: <Widget>[
-                                    for (int i = 0; i < 5; i++)
-                                      Icon(
-                                        Icons.star,
-                                        color: i < products[index].star
-                                            ? const Color(0xFFDB166E)
-                                            : Colors.grey,
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-        ],
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

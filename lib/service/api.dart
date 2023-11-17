@@ -5,6 +5,8 @@ import 'dart:convert';
 import 'package:food/model/product_model.dart';
 import 'package:http/http.dart' as http;
 
+import '../model/review_model.dart';
+
 class API {
   static const BASE_URL = "http://localhost:3002";
   static final cookieJar = Map<String, String>();
@@ -24,6 +26,31 @@ class API {
     }
   }
 
+
+    static Future<List<Review>> getProductReviews(String productId) async {
+    try {
+      final response =
+          await http.get(Uri.parse('$BASE_URL/product/$productId/reviews'));
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> reviewData = json.decode(response.body);
+
+        // Chuyển đổi danh sách đánh giá từ Map sang List<Review>
+        final List<dynamic> reviewsData = reviewData['reviews'];
+        final List<Review> reviews = reviewsData
+            .map((reviewData) => Review.fromJson(reviewData))
+            .toList();
+
+        return reviews;
+      } else {
+        throw Exception('Failed to load product reviews');
+      }
+    } catch (error) {
+      print('Error: $error');
+      throw error;
+    }
+  }
+
   static Future<List<Product>> getProducts() async {
     try {
       final response = await http.get(Uri.parse('$BASE_URL/products'));
@@ -40,6 +67,27 @@ class API {
         return products;
       } else {
         throw Exception('Failed to load data');
+      }
+    } catch (error) {
+      print('Error: $error');
+      throw error;
+    }
+  }
+
+  static Future<Product> getProduct(String productId) async {
+    try {
+      final response =
+          await http.get(Uri.parse('$BASE_URL/product/$productId'));
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> productData = json.decode(response.body);
+
+        // Chuyển đổi thông tin sản phẩm từ Map sang Product
+        final Product product = Product.fromJson(productData);
+
+        return product;
+      } else {
+        throw Exception('Failed to load product data');
       }
     } catch (error) {
       print('Error: $error');
@@ -99,7 +147,7 @@ class API {
     final List<String> cookies = cookieJar.entries
         .map((entry) => '${entry.key}=${entry.value}')
         .toList();
-        print(cookies);
+    print(cookies);
     return cookies.join('; ');
   }
 }

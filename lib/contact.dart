@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:food/book_table.dart';
 import 'package:food/favories.dart';
 import 'package:food/profile.dart';
-import 'package:food/reviews.dart';
+import 'package:food/screen_review.dart';
 import 'package:food/search.dart';
 
 class ContactItem extends StatefulWidget {
@@ -44,7 +44,7 @@ class _ContactItemState extends State<ContactItem>
           Search(),
           BookTable(),
           FavoriesItem(),
-          Reviews(),
+          ScreenReview(),
           Profile(),
         ],
       ),
