@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/info_produce.dart';
 
 class FavoriesInItemPage extends StatefulWidget {
   const FavoriesInItemPage({super.key});
@@ -41,13 +42,22 @@ class _FavoriesInItemPageState extends State<FavoriesInItemPage> {
                             width: 342,
                             height: 180,
                             child: Center(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(
-                                      "${orders[index].imageOrder}",
+                              child: InkWell(
+                                onTap:() => {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const InfoProduce()),
+                                  ),
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                        "${orders[index].imageOrder}",
+                                      ),
                                     ),
                                   ),
                                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food/listItem.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -77,68 +78,77 @@ class _SearchState extends State<Search> {
             top: 350,
             left: 20,
             right: 20,
-            child: Column(
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Search for address, food...",
-                    hintStyle: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                    ), // Màu chữ gợi ý
-                    filled: true, // Bật nền màu
-                    fillColor: Colors.white, // Màu nền
-                    prefixIcon: const Icon(
-                      Icons.search,
-                      color: Colors.grey, // Màu icon
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        // Xử lý khi nút Submit được nhấn
-                      },
-                      icon: SvgPicture.asset(
-                        'assets/vectors/location.svg', // Đường dẫn tới hình ảnh SVG
-                        width: 24, // Kích thước của hình ảnh
-                        height: 24,
+            child: InkWell(
+              onFocusChange: (value) => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ListItem()),
+                ),
+              },
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Search for address, food...",
+                      hintStyle: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                      ), // Màu chữ gợi ý
+                      filled: true, // Bật nền màu
+                      fillColor: Colors.white, // Màu nền
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Colors.grey, // Màu icon
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          // Xử lý khi nút Submit được nhấn
+                        },
+                        icon: SvgPicture.asset(
+                          'assets/vectors/location.svg', // Đường dẫn tới hình ảnh SVG
+                          width: 24, // Kích thước của hình ảnh
+                          height: 24,
+                        ),
+                      ),
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors
+                                .white), // Màu viền khi ô văn bản không được tập trung
+                      ),
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors
+                                .white), // Màu viền khi ô văn bản được tập trung
                       ),
                     ),
-                    enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors
-                              .white), // Màu viền khi ô văn bản không được tập trung
-                    ),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors
-                              .white), // Màu viền khi ô văn bản được tập trung
+                    style: const TextStyle(
+                      color: Colors.grey, // Màu chữ trong ô văn bản
                     ),
                   ),
-                  style: const TextStyle(
-                    color: Colors.grey, // Màu chữ trong ô văn bản
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Xử lý sự kiện khi nút được nhấn
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        const Color(0xFFDB166E)), // Đặt màu nền theo mã màu HEX
-                    minimumSize: MaterialStateProperty.all<Size>(
-                        const Size(400, 51)), // Đặt kích thước nút
-                  ),
-                  child: const Text(
-                    'SEARCH',
-                    style: TextStyle(
-                      color: Colors.white, // Đặt màu chữ màu trắng
-                      fontSize: 16, // Tùy chỉnh kích thước chữ theo nhu cầu
+                  ElevatedButton(
+                    onPressed: () {
+                      // Xử lý sự kiện khi nút được nhấn
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color(0xFFDB166E)), // Đặt màu nền theo mã màu HEX
+                      minimumSize: MaterialStateProperty.all<Size>(
+                          const Size(400, 51)), // Đặt kích thước nút
+                    ),
+                    child: const Text(
+                      'SEARCH',
+                      style: TextStyle(
+                        color: Colors.white, // Đặt màu chữ màu trắng
+                        fontSize: 16, // Tùy chỉnh kích thước chữ theo nhu cầu
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

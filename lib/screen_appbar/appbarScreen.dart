@@ -95,7 +95,7 @@ class _AppbarScreenState extends State<AppbarScreen> {
                     child: TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Recomment",
+                        "Recommen",
                         style: TextStyle(color: Color(0xFFFFFFFF)),
                       ),
                     ),
@@ -111,7 +111,9 @@ class _AppbarScreenState extends State<AppbarScreen> {
                 Container(
                   height: 48,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     icon:
                         const Icon(Icons.arrow_back, color: Color(0xFFFFFFFF)),
                   ),
