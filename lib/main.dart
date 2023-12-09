@@ -4,12 +4,8 @@ import 'package:food/home.dart';
 import 'package:food/listItem.dart';
 import 'package:food/screen_appbar/appbarScreen.dart';
 import 'package:food/screen_appbar/pageFavoriesInItem.dart';
-// import 'package:food/label_search.dart';
 import 'package:food/test.dart';
-// import 'package:food/profile.dart';
-// import 'package:food/contact.dart';
-// import 'package:food/book_table.dart';
-// import 'package:food/notification.dart';
+
 
 void main() {
   runApp(const MyApp());
