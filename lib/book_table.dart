@@ -1,8 +1,10 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unnecessary_null_comparison, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food/model/product_model.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:food/service/api.dart';
 
 class BookTable extends StatefulWidget {
   const BookTable({super.key});
@@ -11,11 +13,32 @@ class BookTable extends StatefulWidget {
   State<BookTable> createState() => _BookTableState();
 }
 
-double totalAmount = items.map((item) => item.price).fold(0.0, (a, b) => a + b);
-
 class _BookTableState extends State<BookTable> {
+  late List<Product> products; // Danh sách sản phẩm từ API
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    try {
+      final response = await API.getProducts();
+
+      setState(() {
+        products = response;
+      });
+    } catch (error) {
+      print('Error: $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    double totalAmount = products != null
+        ? products.map((product) => product.price).fold(0.0, (a, b) => a + b)
+        : 0.0;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -163,7 +186,7 @@ class _BookTableState extends State<BookTable> {
                   ),
                 ),
               ),
-              Container(
+               Container(
                 color: Colors.white,
                 child: Align(
                   alignment: Alignment.centerLeft,
@@ -177,8 +200,8 @@ class _BookTableState extends State<BookTable> {
                     child: Column(
                       children: [
                         Column(
-                          children: items.map(
-                            (item) {
+                          children: products.map(
+                            (product) {
                               return Column(
                                 children: [
                                   Row(
@@ -194,31 +217,27 @@ class _BookTableState extends State<BookTable> {
                                             width: 1.0,
                                           ),
                                         ),
-                                        child: Image.asset(
-                                          item.imagUrl,
+                                        child: Image.network(
+                                          product.image,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
-                                      const SizedBox(
-                                        width: 20,
-                                      ),
+                                      const SizedBox(width: 20),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            item.name,
+                                            product.name,
                                             style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w800,
                                               color: Colors.black,
                                             ),
                                           ),
-                                          const SizedBox(
-                                            height: 4,
-                                          ),
+                                          const SizedBox(height: 4),
                                           Text(
-                                            '\$${item.price.toStringAsFixed(2)}',
+                                            '\$${product.price.toStringAsFixed(2)}',
                                             style: const TextStyle(
                                               fontSize: 10,
                                               color: Colors.black,
@@ -245,12 +264,10 @@ class _BookTableState extends State<BookTable> {
                                             ),
                                           ),
                                         ],
-                                      )
+                                      ),
                                     ],
                                   ),
-                                  const SizedBox(
-                                    height: 30,
-                                  ),
+                                  const SizedBox(height: 30),
                                 ],
                               );
                             },
@@ -311,7 +328,7 @@ class _BookTableState extends State<BookTable> {
                       ),
                     ),
                     const SizedBox(
-                      width: 200,
+                      width: 10,
                     ),
                     Row(
                       children: [
@@ -427,26 +444,3 @@ class _BookTableState extends State<BookTable> {
     );
   }
 }
-
-class Item {
-  final String name;
-  final double price;
-  final String imagUrl;
-
-  Item({required this.name, required this.imagUrl, required this.price});
-}
-
-List<Item> items = [
-  Item(
-      name: 'Porridge with Pork Liver',
-      price: 32.00,
-      imagUrl: 'assets/images/food_2.png'),
-  Item(
-      name: 'Concubine Chicken (Half)',
-      price: 132.00,
-      imagUrl: 'assets/images/food_3.png'),
-  Item(
-      name: 'Ginger Red Date Cake',
-      price: 18.00,
-      imagUrl: 'assets/images/food_1.png'),
-];

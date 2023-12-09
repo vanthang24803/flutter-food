@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Reviews extends StatefulWidget {
-  const Reviews({Key? key});
+class ScreenReview extends StatefulWidget {
+  const ScreenReview({Key? key});
 
   @override
-  State<Reviews> createState() => _ReviewsState();
+  State<ScreenReview> createState() => _ScreenReviewState();
 }
 
-class _ReviewsState extends State<Reviews> {
+class _ScreenReviewState extends State<ScreenReview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,14 +163,14 @@ class _ReviewsState extends State<Reviews> {
   }
 }
 
-class Review {
+class ReviewItem {
   final String userName;
   final String time;
   final String imgUserName;
   final String review;
   final int star;
 
-  Review({
+  ReviewItem({
     required this.userName,
     required this.time,
     required this.imgUserName,
@@ -179,8 +179,8 @@ class Review {
   });
 }
 
-List<Review> reviews = [
-  Review(
+List<ReviewItem> reviews = [
+  ReviewItem(
     userName: "Anna Rose",
     time: "2 hours ago",
     imgUserName: 'assets/images/avt_woman.png',
@@ -188,7 +188,7 @@ List<Review> reviews = [
         "We had a chance to try some of the food from the restaurant prepared for the food festival, and the chicken croquettes were simply amazing!",
     star: 4,
   ),
-  Review(
+  ReviewItem(
     userName: "Robert Brown",
     time: "4 hours ago", // Sử dụng số nguyên thay vì chuỗi
     imgUserName: 'assets/images/avt_men.png',
@@ -196,7 +196,7 @@ List<Review> reviews = [
         "Amazing meat, lamb is a dream. Top service, nice atmosphere. Very recommended. Wine at least must be improved.",
     star: 5, // Sử dụng số nguyên thay vì chuỗi
   ),
-  Review(
+  ReviewItem(
     userName: "Mike Jhone",
     time: "2 day agos", // Sử dụng số nguyên thay vì chuỗi
     imgUserName: 'assets/images/avt_men.png',
@@ -204,7 +204,7 @@ List<Review> reviews = [
         "We had a wonderful dinner last night. The food and staff were terrific. Often when we go to restaurants, it is hard to find a menu that works well for both of us. Random makes that a non-issue. My companion was not as hungry as I was. She asked for two appetizers, while I wanted an appetizer and a main. She only wanted an appetizer portion.",
     star: 4, // Sử dụng số nguyên thay vì chuỗi
   ),
-  Review(
+  ReviewItem(
     userName: "Anna Rose",
     time: "2 hours ago",
     imgUserName: 'assets/images/avt_woman.png',
