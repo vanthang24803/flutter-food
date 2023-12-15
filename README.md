@@ -12,13 +12,21 @@
 
 Phân chia công việc :
 
-Nguyễn Văn Thắng (Dev) : - Xây dựng UI (FE) ứng dụng các màn hình (1 ,2, 3, 6 , ,8, 9 , 10, 11 , 16 )
-
+Nguyễn Văn Thắng (Dev) : 
+- Xây dựng UI (FE) ứng dụng các màn hình (1 ,2, 3, 6 , ,8, 9 , 10, 11 , 16 )
 - Xây dựng API (BE) ứng dụng các tính năng đăng nhập đăng ký , xem thông tin các sản phẩm
 - Sơ lược Document
 
-Nguyễn Hữu Phi (Dev) : Xây dựng UI(FE) ứng dụng các màn (4, 5, 7 , 12 ,13, 15) , liên kết logic các màn hình
+Nguyễn Hữu Phi (Dev) : 
+-Xây dựng UI(FE) ứng dụng các màn (4, 5, 7 , 12 ,13, 15) 
+-Liên kết logic các màn hình
 
-Nguyễn Tiến Đạt (BA) : Xây dựng tài liệu Báo cáo (Word) từ sơ lược có sẵn , làm ppt thuyết trình sản phẩm , nghiên cứu về tài liệu
+Nguyễn Tiến Đạt (BA) : 
+-Xây dựng tài liệu Báo cáo (Word) từ sơ lược có sẵn 
+-Làm ppt thuyết trình sản phẩm 
+-Nghiên cứu về tài liệu
 
-Phan Duy Thịnh (Tester) : Nghiên cứu báo cáo về quá trình kiểm thử sản phẩm
+Phan Duy Thịnh (Tester) : 
+-Nghiên cứu báo cáo về quá trình kiểm thử sản phẩm
+-Viết báo cáo về kiểm thử
+
