@@ -1,16 +1,24 @@
-# food
+# Food BTL Nhóm 8 BTL
 
-A new Flutter project.
+## Thành Viên Nhóm
 
-## Getting Started
+### 1. Nguyễn Văn Thắng - 2121050131
 
-This project is a starting point for a Flutter application.
+### 2. Nguyễn Hữu Phi - 2121050154
 
-A few resources to get you started if this is your first Flutter project:
+### 3. Nguyễn Tiến Đạt - 2121050564
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 4. Phan Duy Thịnh - 2121050548
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Phân chia công việc :
+
+Nguyễn Văn Thắng (Dev) : - Xây dựng UI (FE) ứng dụng các màn hình (1 ,2, 3, 6 , ,8, 9 , 10, 11 , 16 )
+
+- Xây dựng API (BE) ứng dụng các tính năng đăng nhập đăng ký , xem thông tin các sản phẩm
+- Sơ lược Document
+
+Nguyễn Hữu Phi (Dev) : Xây dựng UI(FE) ứng dụng các màn (4, 5, 7 , 12 ,13, 15) , liên kết logic các màn hình
+
+Nguyễn Tiến Đạt (BA) : Xây dựng tài liệu Báo cáo (Word) từ sơ lược có sẵn , làm ppt thuyết trình sản phẩm , nghiên cứu về tài liệu
+
+Phan Duy Thịnh (Tester) : Nghiên cứu báo cáo về quá trình kiểm thử sản phẩm
