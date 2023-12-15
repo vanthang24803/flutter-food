@@ -13,7 +13,7 @@
 Phân chia công việc :
 
 Nguyễn Văn Thắng (Dev) : 
-- Xây dựng UI (FE) ứng dụng các màn hình (1 ,2, 3, 6 , ,8, 9 , 10, 11 , 16 )
+- Xây dựng UI (FE) ứng dụng các màn hình (1 ,2, 3, 6 ,8, 9 , 10, 11 , 16 )
 - Xây dựng API (BE) ứng dụng các tính năng đăng nhập đăng ký , xem thông tin các sản phẩm
 - Sơ lược Document
 
